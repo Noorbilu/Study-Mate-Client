@@ -63,21 +63,26 @@ const Register = () => {
           image: user.photoURL,
         };
 
-        fetch("http://localhost:3000/users", {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify(newUser),
+          //create user in the database
+            fetch('http://localhost:3000/users' , {
+                method: 'POST',
+                headers: {
+                    'content-type' :'application/json'
+                },
+                body: JSON.stringify(newUser)
+            })
+            .then(res => res.json())
+            .then(data =>{
+                console.log('data after user',data)
+                toast.success("✅ Registered with Google!");
+                navigate(location.state?.from || "/");
+            })
         })
-          .then((res) => res.json())
-          .then(() => {
-            toast.success("✅ Registered with Google!");
-            navigate(location.state?.from || "/");
-          });
-      })
-      .catch((error) => {
-        toast.error("❌ Google login failed!");
-        console.error(error);
-      });
+        .catch(error => {
+            console.log(error)
+            toast.error("❌ Google login failed!");
+        })
+        
   };
 
   return (
@@ -107,7 +112,7 @@ const Register = () => {
 
             {/* Photo URL */}
             <label className="font-semibold text-gray-300">Photo URL</label>
-            <input
+            <input 
               type="text"
               name="photo"
               placeholder="Enter photo URL"

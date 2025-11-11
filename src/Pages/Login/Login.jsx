@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 
 const Login = () => {
-  const { signIn, signInWithGoogle, setUser } = useContext(AuthContext);
+  const { signInUser, signInWithGoogle, setUser } = useContext(AuthContext);
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
@@ -20,18 +20,18 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    signIn(email, password)
-      .then((result) => {
-        const user = result.user;
-        setUser(user);
-        toast.success("✅ Login successful!");
-        navigate(location.state?.from || "/");
-      })
-      .catch((error) => {
-        console.error(error);
-        setError("❌ Invalid email or password.");
-        toast.error(error.message);
-      });
+signInUser(email, password)
+  .then((result) => {
+    const user = result.user;
+    setUser(user);
+    toast.success("✅ Login successful!");
+    navigate(location.state?.from || "/");
+  })
+  .catch((error) => {
+    console.error(error);
+    setError("❌ Invalid email or password.");
+    toast.error(error.message);
+  });
   };
 
   // ✅ Handle Google Sign-in
