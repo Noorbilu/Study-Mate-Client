@@ -69,31 +69,24 @@ const Connections = () => {
 
     return (
         <div className="container mx-auto px-4 my-8">
-            <h1 className="text-3xl font-bold mb-6 text-fuchsia-900">My Connections</h1>
-
-            <div className="overflow-x-auto rounded-lg shadow-md">
-                <table className="table table-zebra w-full min-w-[600px]">
-                    <thead className="bg-fuchsia-200">
-                        <tr>
-                            <th>Partner</th>
-                            <th>Subject</th>
-                            <th>Mode</th>
-                            <th>Message</th>
-                            <th>Actions</th>
-                        </tr>
+            <h1 className="text-2xl font-bold mb-4">My Connections</h1>
+            <div className="overflow-x-auto">
+                <table className="table">
+                    <thead>
+                        <tr><th>Partner</th><th>Subject</th><th>Mode</th><th>Message</th><th>Actions</th></tr>
                     </thead>
                     <tbody>
                         {items.map(r => (
                             <tr key={r._id}>
-                                <td className="flex items-center gap-3">
+                                <td className="flex items-center gap-2">
                                     <img src={r.partnerImage} alt={r.partnerName} className="w-10 h-10 rounded-full object-cover" />
-                                    <span className="font-medium">{r.partnerName}</span>
+                                    <span>{r.partnerName}</span>
                                 </td>
                                 <td>{r.subject}</td>
                                 <td>{r.studyMode}</td>
                                 <td className="max-w-xs truncate">{r.message}</td>
                                 <td className="flex gap-2">
-                                    <button className="btn btn-sm btn-primary" onClick={() => setEdit(r)}>Update</button>
+                                    <button className="btn btn-sm" onClick={() => setEdit(r)}>Update</button>
                                     <button className="btn btn-sm btn-error text-white" onClick={() => remove(r._id)}>Delete</button>
                                 </td>
                             </tr>
@@ -102,23 +95,23 @@ const Connections = () => {
                 </table>
             </div>
 
-            {/* Edit message input */}
+            text
+
             {edit && (
-                <div className="mt-4 flex flex-col sm:flex-row gap-2 items-center">
-                    <input
-                        type="text"
-                        className="input input-bordered flex-1"
-                        value={edit.message}
-                        onChange={(e) => setEdit({ ...edit, message: e.target.value })}
-                    />
-                    <div className="flex gap-2">
-                        <button className="btn btn-success" onClick={save}>Save</button>
-                        <button className="btn btn-secondary" onClick={() => setEdit(null)}>Cancel</button>
+                <div className="modal modal-open">
+                    <div className="modal-box">
+                        <h3 className="font-bold text-lg">Update Message</h3>
+                        <textarea className="textarea textarea-bordered w-full mt-2" rows="4"
+                            value={edit.message} onChange={(e) => setEdit({ ...edit, message: e.target.value })} />
+                        <div className="modal-action">
+                            <button className="btn" onClick={() => setEdit(null)}>Cancel</button>
+                            <button className="btn btn-primary" onClick={save}>Save</button>
+                        </div>
                     </div>
                 </div>
             )}
         </div>
     );
-};
+}
 
 export default Connections;
