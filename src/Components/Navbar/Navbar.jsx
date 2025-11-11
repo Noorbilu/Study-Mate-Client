@@ -16,8 +16,12 @@ const Navbar = () => {
         <li><NavLink to="/allMates">Find Partners</NavLink></li>
         {
             user && <>
-                {/* <li><NavLink to="/myProducts">My Products</NavLink></li> */}
-                <li><NavLink to="/myConnection">My Connections</NavLink></li>
+                <li><NavLink to="/partnerProfile">Create Partner Profile</NavLink></li>
+            </>
+        }
+        {
+            user && <>
+                <li><NavLink to="/connections">My Connections</NavLink></li>
             </>
         }
         
@@ -46,17 +50,14 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3  p-2 shadow bg-fuchsia-200 rounded-box w-52"
           >
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/partners">Find Partners</Link></li>
-            {user && <li><Link to="/create">Create Partner Profile</Link></li>}
-            {user && <li><Link to="/connections">My Connections</Link></li>}
+            {links}
           </ul>
         </div>
 
         {/* Brand */}
-        <Link to="/" className="font-bold text-xl">
+        <Link to="/" className="text-fuchsia-950 font-bold text-xl">
           📚 StudyMate
         </Link>
       </div>
@@ -64,10 +65,6 @@ const Navbar = () => {
       {/* Desktop links */}
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          {/* <li><Link to="/">Home</Link></li>
-          <li><Link to="/partners">Find Partners</Link></li>
-          {user && <li><Link to="/create">Create Partner Profile</Link></li>}
-          {user && <li><Link to="/connections">My Connections</Link></li>} */}
           {links}
         </ul>
       </div>

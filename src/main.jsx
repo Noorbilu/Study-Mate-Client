@@ -11,11 +11,16 @@ import AuthProvider from './Context/AuthProvider.jsx';
 import AuthLayout from './Layout/AuthLayout.jsx';
 import Register from './Pages/Register/Register.jsx';
 import Login from './Pages/Login/Login.jsx';
+import PartnerProfile from './Components/PartnerProfile/PartnerProfile.jsx';
+import Connections from './Components/Connections/Connections.jsx';
+import FindPartner from './Components/FindPartner/FindPartner.jsx';
+import ErrorPage from './Pages/ErrorPage/ErrorPage.jsx';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
+    errorElement: <ErrorPage></ErrorPage>,
     Component: RootLayout,
     children: [
       {
@@ -24,8 +29,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/allMates",
-        Component: AllMates
+        Component: FindPartner
       },
+      {
+        path: "/connections",
+        Component: Connections
+      },
+      {
+        path: "/partnerProfile",
+        Component: PartnerProfile
+      },
+      
       {
         path: "/auth",
         element: <AuthLayout></AuthLayout>,
