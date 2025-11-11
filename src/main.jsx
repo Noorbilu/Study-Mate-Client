@@ -15,6 +15,7 @@ import PartnerProfile from './Components/PartnerProfile/PartnerProfile.jsx';
 import Connections from './Components/Connections/Connections.jsx';
 import FindPartner from './Components/FindPartner/FindPartner.jsx';
 import ErrorPage from './Pages/ErrorPage/ErrorPage.jsx';
+import Profile from './Components/Profile/Profile.jsx';
 
 
 const router = createBrowserRouter([
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/partnerProfile",
         Component: PartnerProfile
+      },
+      {
+        path:"/profile",
+        Component: Profile
       },
       
       {
