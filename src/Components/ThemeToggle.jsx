@@ -10,9 +10,6 @@ export default function ThemeToggle() {
         localStorage.setItem('theme', theme);
     }, [theme]);
 
-
-
-
     
     return (
         <button className="btn btn-ghost" aria-label="Toggle theme"

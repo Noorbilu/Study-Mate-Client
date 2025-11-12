@@ -16,6 +16,7 @@ import Connections from './Components/Connections/Connections.jsx';
 import FindPartner from './Components/FindPartner/FindPartner.jsx';
 import ErrorPage from './Pages/ErrorPage/ErrorPage.jsx';
 import Profile from './Components/Profile/Profile.jsx';
+import PartnerDetails from './Components/PartnerDetails/PartnerDetails.jsx';
 
 
 const router = createBrowserRouter([
@@ -44,7 +45,11 @@ const router = createBrowserRouter([
         path:"/profile",
         Component: Profile
       },
-      
+      {
+        path: "/partners/:id",
+        loader: ({ params }) => fetch(`http://localhost:3000/mates/${params.id}`),
+        Component: PartnerDetails
+      },
       {
         path: "/auth",
         element: <AuthLayout></AuthLayout>,
