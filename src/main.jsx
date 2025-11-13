@@ -33,12 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/allMates",
         loader: () => fetch('http://localhost:3000/mates'),
-
         Component: FindPartner
       },
       {
-        path: "/connections",
-        loader: ({ params }) => fetch(`http://localhost:3000/mates/${params.id}`),
+        path: "/connection",
         Component: Connections
       },
       {

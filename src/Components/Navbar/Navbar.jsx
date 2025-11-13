@@ -34,7 +34,7 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/connections" className={({ isActive }) => (isActive ? "font-bold text-fuchsia-800" : "")}>
+            <NavLink to="/connection" className={({ isActive }) => (isActive ? "font-bold text-fuchsia-800" : "")}>
               My Connections
             </NavLink>
           </li>

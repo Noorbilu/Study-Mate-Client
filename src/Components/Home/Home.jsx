@@ -6,6 +6,7 @@ import HowItWorks from '../HowItWorks';
 
 const latestMatesPromise = fetch('http://localhost:3000/latest-mates').then(res => res.json());
 
+
 const Home = () => {
     return (
         <div>
