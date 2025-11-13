@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 
 const PartnerProfile = () => {
     const { user } = useContext(AuthContext);
+
     const [form, setForm] = useState({
         name: user?.displayName || '',
         profileimage: user?.photoURL || '',
@@ -24,7 +25,8 @@ const PartnerProfile = () => {
         e.preventDefault();
         try {
             const payload = { ...form, ownerUid: user.uid };
-            await axios.post('/partners', payload);
+            await axios.post('/mates', payload);
+
             toast.success('Profile created!');
             setForm(f => ({ ...f, subject: '', availabilityTime: '', location: '' }));
         } catch (e) {
@@ -75,7 +77,7 @@ const PartnerProfile = () => {
                     name="availabilityTime"
                     value={form.availabilityTime}
                     onChange={onChange}
-                    placeholder="Availability (e.g., Evening 6–9 PM)"
+                    placeholder="Availability (e.g., Evening 6-9 PM)"
                     className="input input-bordered w-full"
                 />
                 <input

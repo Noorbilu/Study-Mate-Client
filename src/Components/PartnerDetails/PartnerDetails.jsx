@@ -22,23 +22,28 @@ const PartnerDetails = () => {
     }, [id]);
 
     const sendRequest = async () => {
+        if (!user) {
+            toast.warn('Please login first!');
+            return;
+        }
         try {
-            await axios.post('/requests', {
+            const connectionData = {
                 partnerId: partner._id,
-                requesterUid: user.uid,
+                partnerName: partner.name,
+                partnerEmail: partner.email,
+                requesterName: user.displayName,
                 requesterEmail: user.email,
                 message,
-            });
-            setPartner((prev) => ({
-                ...prev,
-                partnerCount: (prev.partnerCount ?? 0) + 1,
-            }));
-            toast.success('Request sent!');
+                createdAt: new Date().toISOString(),
+            };
+
+            await axios.post('/connection', connectionData);
+
+            toast.success('Connection request sent!');
             setMessage('');
         } catch (e) {
-            if (e.response?.status === 409)
-                toast.warn('You already requested this partner');
-            else toast.error('Failed to send request');
+            console.error(e);
+            toast.error('Failed to send connection request');
         }
     };
 
@@ -66,6 +71,7 @@ const PartnerDetails = () => {
                     <div>Rating: ⭐ {partner.rating ?? 0}</div>
                     <div>Partner Count: 🤝 {partner.partnerCount ?? 0}</div>
                 </div>
+
                 <div className="mt-4">
                     <textarea
                         value={message}
@@ -73,7 +79,10 @@ const PartnerDetails = () => {
                         className="textarea textarea-bordered w-full"
                         placeholder="Add a short message (optional)"
                     ></textarea>
-                    <button onClick={sendRequest} className="btn btn-primary mt-2 bg-gradient-to-r from-purple-900 to-gray-400 text-white border-none">
+                    <button
+                        onClick={sendRequest}
+                        className="btn btn-primary mt-2 bg-gradient-to-r from-purple-900 to-gray-400 text-white border-none"
+                    >
                         Send Partner Request
                     </button>
                 </div>

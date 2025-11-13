@@ -32,10 +32,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/allMates",
+        loader: () => fetch('http://localhost:3000/mates'),
+
         Component: FindPartner
       },
       {
         path: "/connections",
+        loader: ({ params }) => fetch(`http://localhost:3000/mates/${params.id}`),
         Component: Connections
       },
       {
@@ -73,7 +76,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
       <RouterProvider router={router} />
-            <ToastContainer
+      <ToastContainer
         position="top-center"
         autoClose={3000}
         hideProgressBar={false}
