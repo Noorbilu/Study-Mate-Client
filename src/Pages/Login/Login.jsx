@@ -20,18 +20,18 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-signInUser(email, password)
-  .then((result) => {
-    const user = result.user;
-    setUser(user);
-    toast.success("✅ Login successful!");
-    navigate(location.state?.from || "/");
-  })
-  .catch((error) => {
-    console.error(error);
-    setError("❌ Invalid email or password.");
-    toast.error(error.message);
-  });
+    signInUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        toast.success("✅ Login successful!");
+        navigate(location.state?.from || "/");
+      })
+      .catch((error) => {
+        console.error(error);
+        setError("❌ Invalid email or password.");
+        toast.error(error.message);
+      });
   };
 
   // ✅ Handle Google Sign-in

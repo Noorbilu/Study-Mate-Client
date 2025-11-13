@@ -3,8 +3,8 @@ import { getAuth } from 'firebase/auth';
 import app from '../firebase/firebase.init';
 
 const instance = axios.create({
-   // baseURL: import.meta.env.VITE_API_URL,
-   baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3000',
+    // baseURL: import.meta.env.VITE_API_URL,
+    baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3000',
 });
 
 instance.interceptors.request.use(async (config) => {
@@ -12,7 +12,7 @@ instance.interceptors.request.use(async (config) => {
     const user = auth.currentUser;
     if (user) {
         const token = await user.getIdToken();
-        config.headers.Authorization = `Bearer ${token}`; 
+        config.headers.Authorization = `Bearer ${token}`;
 
     }
     return config;

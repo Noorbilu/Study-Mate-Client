@@ -6,11 +6,12 @@ import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import RootLayout from './Layout/RootLayout.jsx';
 import Home from './Components/Home/Home.jsx';
-import AllMates from './Components/AllMates/AllMates.jsx';
 import AuthProvider from './Context/AuthProvider.jsx';
 import AuthLayout from './Layout/AuthLayout.jsx';
 import Register from './Pages/Register/Register.jsx';
 import Login from './Pages/Login/Login.jsx';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import PartnerProfile from './Components/PartnerProfile/PartnerProfile.jsx';
 import Connections from './Components/Connections/Connections.jsx';
 import FindPartner from './Components/FindPartner/FindPartner.jsx';
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
         Component: PartnerProfile
       },
       {
-        path:"/profile",
+        path: "/profile",
         Component: Profile
       },
       {
@@ -72,6 +73,15 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
       <RouterProvider router={router} />
+            <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnHover
+        theme="colored"
+      />
     </AuthProvider>
   </StrictMode>,
 )
