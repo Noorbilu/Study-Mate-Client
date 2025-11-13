@@ -7,7 +7,7 @@ const LatestMates = ({ latestMatesPromise }) => {
 
     return (
         <div className='mx-auto max-w-6xl'>
-            <h2 className="p-6 text-5xl text-center text-fuchsia-800">Study <span className='text-fuchsia-950'>Partner</span></h2>
+            <h2 className="p-6 text-5xl font-bold text-center text-fuchsia-800 drop-shadow-lg">Study <span className='text-fuchsia-950 drop-shadow-lg'>Partner</span></h2>
             <div className=" grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {
                     partner.map(partner => <PartnerCard

@@ -4,15 +4,15 @@ import { motion } from "framer-motion";
 const slides = [
   {
     id: 1,
-    img: "https://i.ibb.co.com/vv4kFQcC/stydy.jpg",
+    img: "https://i.ibb.co.com/chXfKrPY/problem-solving-concept-with-books.jpg",
   },
   {
     id: 2,
-    img: "https://i.ibb.co/rR1kYjWz/9de00d6a3887ee5f76bd63c148d62160.jpg",
+    img: "https://i.ibb.co.com/yFt1RjwP/close-up-colorful-books-pile.jpg",
   },
   {
     id: 3,
-    img: "https://i.ibb.co/0jfVryD7/cc272e5581bbd170b5cf1b62f92ab5df.jpg",
+    img: "https://i.ibb.co.com/WWPjys4j/study4.png",
   },
 ];
 
@@ -29,7 +29,7 @@ const Hero = () => {
   }, [paused]);
 
   return (
-    <div className="relative w-full bg-black pb-5">
+    <div className="relative w-full bg-fuchsia-50 pb-5">
       {/* Hero Text Section */}
       <motion.div
         initial={{ opacity: 0, y: -50 }}
@@ -41,17 +41,17 @@ const Hero = () => {
           initial={{ scale: 0.9 }}
           animate={{ scale: 1 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl font-extrabold text-white drop-shadow-lg"
+          className="text-5xl font-extrabold text-fuchsia-100 drop-shadow-lg"
         >
-          Level Up Your Gaming Experience
+          Level Up Your Reading Experience
         </motion.h1>
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="mt-3 text-lg text-white"
+          className="mt-3 text-lg text-fuchsia-800 font-bold"
         >
-          Discover, play, and conquer — explore the best games across every genre.
+          Connect minds, share knowledge — your study partner awaits.
         </motion.p>
       </motion.div>
 
