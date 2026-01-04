@@ -52,7 +52,7 @@ const HowItWorks = () => {
                         }}
                         className="rounded-3xl overflow-hidden shadow-md bg-white border border-fuchsia-100 hover:border-fuchsia-200 transition-all duration-300 cursor-pointer backdrop-blur-sm"
                     >
-                        {/* Image */}
+                        
                         <div className="relative h-56 overflow-hidden">
                             <img
                                 src={item.image}
@@ -66,7 +66,7 @@ const HowItWorks = () => {
                             </div>
                         </div>
 
-                        {/* Text */}
+                        
                         <div className="p-6 text-center">
                             <h3 className="font-semibold text-lg text-fuchsia-800 mb-2">
                                 {item.title}

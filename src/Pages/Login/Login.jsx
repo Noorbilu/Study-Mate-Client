@@ -12,7 +12,6 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // ✅ Handle email/password login
   const handleLogin = (event) => {
     event.preventDefault();
 
@@ -34,7 +33,7 @@ const Login = () => {
       });
   };
 
-  // ✅ Handle Google Sign-in
+
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
@@ -47,7 +46,7 @@ const Login = () => {
           image: user.photoURL,
         };
 
-        fetch("http://localhost:3000/users", {
+        fetch("https://study-mate-server-phi.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -82,7 +81,6 @@ const Login = () => {
 
         <form onSubmit={handleLogin} className="card-body">
           <fieldset className="fieldset space-y-1.5">
-            {/* Email */}
             <label className="font-semibold text-gray-300">Email</label>
             <input
               type="email"
@@ -92,7 +90,7 @@ const Login = () => {
               className="input transition-all duration-300 bg-white/5 border border-gray-400 text-white placeholder-gray-400 focus:border-amber-950 focus:outline-none"
             />
 
-            {/* Password */}
+            
             <label className="font-semibold text-gray-300">Password</label>
             <input
               type="password"
@@ -113,7 +111,7 @@ const Login = () => {
               </a>
             </div>
 
-            {/* Login Button */}
+            
             <button
               type="submit"
               className="btn mt-4 w-full bg-gradient-to-r from-amber-950 to-amber-200 hover:from-amber-400 hover:to-amber-100 border-none"
@@ -127,7 +125,7 @@ const Login = () => {
               </div>
             </div>
 
-            {/* Google Sign-in */}
+            
             <button
               onClick={handleGoogleSignIn}
               type="button"
@@ -163,7 +161,7 @@ const Login = () => {
               Login with Google
             </button>
 
-            {/* Register Link */}
+            
             <p className="font-semibold text-center pt-5">
               Don't have an account?{" "}
               <Link to="/auth/register" className="text-amber-950 hover:underline">

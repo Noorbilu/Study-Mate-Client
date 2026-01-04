@@ -1,21 +1,21 @@
-import React, { use, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import bgImage from "./study_login.webp";
 import { AuthContext } from "../../Context/AuthContext";
 import { toast } from "react-toastify";
 import { getAuth, updateProfile } from "firebase/auth";
 
-const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:3000/api";
+const API_BASE = import.meta.env.VITE_API_URL || "https://study-mate-server-phi.vercel.app";
+
 
 const Register = () => {
-  const { createUser, setUser, signInWithGoogle } = use(AuthContext);
+  const { createUser, setUser, signInWithGoogle } = useContext(AuthContext);
   const [nameError, setNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  // Password validation function
   const isPasswordValid = (password) => {
     const hasUppercase = /[A-Z]/.test(password);
     const hasLowercase = /[a-z]/.test(password);
@@ -23,17 +23,17 @@ const Register = () => {
     return hasUppercase && hasLowercase && hasMinLength;
   };
 
-  // ✅ Email/password registration
+  
   const handleRegister = async (event) => {
     event.preventDefault();
 
     const form = event.target;
     const name = form.name.value;
-    const photoURL = form.photo.value; // ✅ fixed variable name
+    const photoURL = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
 
-    // Name validation
+    
     if (name.length < 5) {
       setNameError("Name should be at least 5 characters");
       return;
@@ -41,7 +41,7 @@ const Register = () => {
       setNameError("");
     }
 
-    // Password validation
+    
     if (!isPasswordValid(password)) {
       setPasswordError(
         "Password must have at least 6 characters, including uppercase and lowercase letters."
@@ -52,16 +52,16 @@ const Register = () => {
     }
 
     try {
-      // Create user with Firebase
+     
       const cred = await createUser(email, password);
       const auth = getAuth();
 
-      // Update profile with name + photo
+      
       await updateProfile(cred.user, { displayName: name, photoURL });
       setUser({ ...cred.user, displayName: name, photoURL });
 
-      // Save to MongoDB
-      const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:3000";
+      
+      const API_BASE = import.meta.env.VITE_API_URL || "https://study-mate-server-phi.vercel.app";
       const newUser = { name, email, image: photoURL };
 
       await fetch(`${API_BASE}/users`, {
@@ -78,7 +78,7 @@ const Register = () => {
     }
   };
 
-  // ✅ Google Sign-in
+
   const handleGoogleSignIn = async () => {
     try {
       const result = await signInWithGoogle();
@@ -91,7 +91,7 @@ const Register = () => {
         image: user.photoURL,
       };
 
-      const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:3000";
+      const API_BASE = import.meta.env.VITE_API_URL || "https://study-mate-server-phi.vercel.app";
 
       await fetch(`${API_BASE}/users`, {
         method: "POST",

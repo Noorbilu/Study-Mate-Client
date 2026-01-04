@@ -22,7 +22,7 @@ const TestimonialsSection = () => {
     ];
 
     return (
-        <section className=" overflow-hidden py-24 px-6 bg-fuchsia-50 ">
+        <section className=" overflow-hidden py-16 px-0 bg-fuchsia-50 ">
 
             <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_bottom_left,rgba(56,189,248,0.12),transparent_60%)]"></div>
 

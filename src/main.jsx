@@ -17,7 +17,11 @@ import Connections from './Components/Connections/Connections.jsx';
 import FindPartner from './Components/FindPartner/FindPartner.jsx';
 import ErrorPage from './Pages/ErrorPage/ErrorPage.jsx';
 import Profile from './Components/Profile/Profile.jsx';
-import PartnerDetails from './Components/PartnerDetails/PartnerDetails.jsx';
+import PartnerDetails from './Components/PartnerDetails/PartnerDetails';
+import DashboardLayout from './Layout/DashboardLayout.jsx';
+import DashboardHome from './Pages/Dashboard/DashboardHome.jsx';
+import UserProfile from './Pages/Dashboard/UserProfile.jsx';
+import AboutUs from './Components/About/AboutUs.jsx';
 
 
 const router = createBrowserRouter([
@@ -31,8 +35,12 @@ const router = createBrowserRouter([
         Component: Home
       },
       {
+        path:"/about",
+        Component: AboutUs
+      },
+      {
         path: "/allMates",
-        loader: () => fetch('http://localhost:3000/mates'),
+        loader: () => fetch('https://study-mate-server-phi.vercel.app/mates'),
         Component: FindPartner
       },
       {
@@ -47,11 +55,12 @@ const router = createBrowserRouter([
         path: "/profile",
         Component: Profile
       },
-      {
-        path: "/partners/:id",
-        loader: ({ params }) => fetch(`http://localhost:3000/mates/${params.id}`),
-        Component: PartnerDetails
-      },
+{
+  path: 'partners/:id',
+  loader: ({ params }) =>
+    fetch(`https://study-mate-server-phi.vercel.app/mates/${params.id}`),
+  element: <PartnerDetails></PartnerDetails>,
+},
       {
         path: "/auth",
         element: <AuthLayout></AuthLayout>,
@@ -67,6 +76,16 @@ const router = createBrowserRouter([
         ]
       },
     ]
+
+  },
+    {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      { index: true, element: <DashboardHome /> },
+      { path: "my-partners", element: <FindPartner /> },
+      { path: "profile", element: <UserProfile /> },
+    ],
   },
 ]);
 

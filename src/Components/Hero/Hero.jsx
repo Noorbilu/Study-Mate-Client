@@ -30,7 +30,7 @@ const Hero = () => {
 
   return (
     <div className="relative w-full bg-fuchsia-50 pb-5">
-      {/* Hero Text Section */}
+      
       <motion.div
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -41,7 +41,7 @@ const Hero = () => {
           initial={{ scale: 0.9 }}
           animate={{ scale: 1 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl font-extrabold text-fuchsia-100 drop-shadow-lg"
+          className="text-5xl font-extrabold text-purple-300 drop-shadow-md"
         >
           Level Up Your Reading Experience
         </motion.h1>
@@ -55,7 +55,7 @@ const Hero = () => {
         </motion.p>
       </motion.div>
 
-      {/* Carousel */}
+      
       <div
         className="relative w-11/12 md:w-10/12 mx-auto overflow-hidden rounded-2xl shadow-2xl"
         onMouseEnter={() => setPaused(true)}
@@ -76,7 +76,7 @@ const Hero = () => {
           </div>
         ))}
 
-        {/* Controls */}
+        
         <button
           onClick={() => setCurrent((current - 1 + slides.length) % slides.length)}
           className="btn btn-circle absolute left-5 top-1/2 -translate-y-1/2 bg-white/60 hover:bg-white"
@@ -90,7 +90,7 @@ const Hero = () => {
           ❯
         </button>
 
-        {/* Dots indicator */}
+        
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
           {slides.map((_, index) => (
             <button
